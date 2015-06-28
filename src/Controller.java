@@ -78,11 +78,11 @@ public class Controller {
     }
 
     private void viewAllPersons() {
-        if (clinic.getCountOfPerson() < 1) {
-            clinic.viewAllPersons();
+        if (clinic.isClinicEmtpy()) {
+            outputInterface.saidNoPersonsInClinic();
         }
         else {
-            outputInterface.saidNoPersonsInClinic();
+            clinic.viewAllPersons();
         }
     }
 

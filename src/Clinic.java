@@ -102,6 +102,11 @@ public class Clinic {
         else return false;
     }
 
+    public boolean isClinicEmtpy() {
+        if (getCountOfPerson() == 0) return true;
+        else return false;
+    }
+
     public int getCountOfPerson() {
         return persons.size();
     }
