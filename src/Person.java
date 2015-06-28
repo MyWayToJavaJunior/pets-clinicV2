@@ -26,10 +26,6 @@ public class Person {
         petOfPerson.setNameOfPet(nameOfPet);
     }
 
-    public String petDoAction() {
-        return "Person name is " + getNameOfPerson() + " " + petOfPerson.doAction();
-    }
-
     @Override
     public String toString() {
         return "Name of Person: " + getNameOfPerson() + ", " + petOfPerson.toString();

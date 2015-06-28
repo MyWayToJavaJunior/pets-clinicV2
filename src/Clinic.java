@@ -11,13 +11,13 @@ public class Clinic {
     public void addPerson(String nameOfPerson, String nameOfPet, int typeOfPet) {
         Pet pet;
         switch (typeOfPet) {
+            default:
             case 1:     pet = new Cat(nameOfPet);
                         break;
             case 2:     pet = new Dog(nameOfPet);
                         break;
             case 3:     pet = new Bird(nameOfPet);
                         break;
-            default:    pet = new Cat(nameOfPet);
         }
         Person person = new Person(nameOfPerson, pet);
         persons.add(person);
@@ -95,6 +95,15 @@ public class Clinic {
                 return true;
         }
         return false;
+    }
+
+    public boolean isClinicFull() {
+        if (getCountOfPerson() == MAX_PERSONS_IN_CLINIC) return true;
+        else return false;
+    }
+
+    public int getCountOfPerson() {
+        return persons.size();
     }
 
 }

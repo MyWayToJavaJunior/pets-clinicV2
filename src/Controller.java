@@ -63,18 +63,27 @@ public class Controller {
     }
 
     private void addPerson() {
-        String nameOfPerson = askForAndGetPersonName();
-        if (clinic.isPersonExistByName(nameOfPerson)) {
-            outputInterface.personAlreadyExist();
+        if (clinic.isClinicFull()) {
+            outputInterface.saidClinicFull();
         } else {
-            String nameOfPet = askForAndGetPetName();
-            int typeOfPet = askForAndGetTypeOfPet();
-            clinic.addPerson(nameOfPerson, nameOfPet, typeOfPet);
+            String nameOfPerson = askForAndGetPersonName();
+            if (clinic.isPersonExistByName(nameOfPerson)) {
+                outputInterface.saidPersonAlreadyExist();
+            } else {
+                String nameOfPet = askForAndGetPetName();
+                int typeOfPet = askForAndGetTypeOfPet();
+                clinic.addPerson(nameOfPerson, nameOfPet, typeOfPet);
+            }
         }
     }
 
     private void viewAllPersons() {
-        clinic.viewAllPersons();
+        if (clinic.getCountOfPerson() < 1) {
+            clinic.viewAllPersons();
+        }
+        else {
+            outputInterface.saidNoPersonsInClinic();
+        }
     }
 
     public void findByNameOfPersonAndView() {
@@ -99,7 +108,7 @@ public class Controller {
         if (clinic.isPersonExistByName(nameOfPerson)) {
             String newNameOfPerson = askForAndGetNewPersonName();
             if (clinic.isPersonExistByName(newNameOfPerson))
-                outputInterface.personAlreadyExist();
+                outputInterface.saidPersonAlreadyExist();
             else
                 clinic.renPerson(nameOfPerson, newNameOfPerson);
         } else outputInterface.saidPersonNotFound();

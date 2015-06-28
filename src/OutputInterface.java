@@ -40,7 +40,15 @@ public class OutputInterface {
         outprint("Pet not found");
     }
 
-    public void personAlreadyExist() {
+    public void saidPersonAlreadyExist() {
         outprint("Person already exist");
+    }
+
+    public void saidNoPersonsInClinic() {
+        outprint("No Persons in Clinic");
+    }
+
+    public void saidClinicFull() {
+        outprint("Clinic is full, remove unnecessary Persons");
     }
 }

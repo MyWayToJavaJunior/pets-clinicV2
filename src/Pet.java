@@ -28,10 +28,6 @@ public abstract class Pet {
         this.nameOfPet = nameOfPet;
     }
 
-    public String doAction() {
-        return getTypeOfPet() + " name is "  + getNameOfPet() + " doing " + getAbility();
-    }
-
     @Override
     public String toString() {
         return "Type of pet is: " + getTypeOfPet() + ", name: " + getNameOfPet() + ", ability: " + getAbility();
