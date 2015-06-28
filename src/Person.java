@@ -5,6 +5,10 @@ public class Person {
     private String nameOfPerson;
     private Pet petOfPerson;
 
+    public Person(String nameOfPerson, Pet petOfPerson) {
+        this.nameOfPerson = nameOfPerson;
+        this.petOfPerson = petOfPerson;
+    }
 
     public String getNameOfPerson() {
         return nameOfPerson;
@@ -14,8 +18,20 @@ public class Person {
         return petOfPerson.getNameOfPet();
     }
 
+    public void setNameOfPerson(String nameOfPerson) {
+        this.nameOfPerson = nameOfPerson;
+    }
+
+    public void setPetNameOfPerson(String nameOfPet) {
+        petOfPerson.setNameOfPet(nameOfPet);
+    }
+
+    public String petDoAction() {
+        return "Person name is " + getNameOfPerson() + " " + petOfPerson.doAction();
+    }
+
     @Override
     public String toString() {
-        return "Name of Person: " + getNameOfPerson() + ", name of Pet Person: " + getNameOfPerson();
+        return "Name of Person: " + getNameOfPerson() + ", " + petOfPerson.toString();
     }
 }
