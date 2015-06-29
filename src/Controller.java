@@ -78,7 +78,7 @@ public class Controller {
     }
 
     private void viewAllPersons() {
-        if (clinic.isClinicEmtpy()) {
+        if (clinic.isClinicEmpty()) {
             outputInterface.saidNoPersonsInClinic();
         }
         else {

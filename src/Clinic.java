@@ -32,19 +32,21 @@ public class Clinic {
     }
 
     public String viewPersonByName(String nameOfPerson) {
+        String result = "";
         for (int i = 0; i < persons.size(); i++) {
             if (nameOfPerson.equals(persons.get(i).getNameOfPerson()))
-                return persons.get(i).toString();
+                result = persons.get(i).toString();
         }
-        return null;
+        return result;
     }
 
     public String viewPersonByPetName(String nameOfPet) {
+        String result = "";
         for (int i = 0; i < persons.size(); i++) {
             if (nameOfPet.equals(persons.get(i).getPetNameOfPerson()))
-                return persons.get(i).toString();
+                result = persons.get(i).toString();
         }
-        return null;
+        return result;
     }
 
     public void remPersonByName(String nameOfPerson) {
@@ -56,19 +58,21 @@ public class Clinic {
     }
 
     public int findPersonIdByPersonName(String nameOfPerson) {
+        int result = -1;
         for (int i = 0; i < persons.size(); i++) {
             if (nameOfPerson.equals(persons.get(i).getNameOfPerson()))
-                return i;
+                result = i;
         }
-        return -1;
+        return result;
     }
 
     public int findPersonIdByPetName(String petNameOfPerson) {
+        int result = -1;
         for (int i = 0; i < persons.size(); i++) {
             if (petNameOfPerson.equals(persons.get(i).getPetNameOfPerson()))
-                return i;
+                result = i;
         }
-        return -1;
+        return result;
     }
 
     public void renPerson(String nameOfPerson, String newNameOfPerson) {
@@ -82,29 +86,29 @@ public class Clinic {
     }
 
     public boolean isPersonExistByName(String nameOfPerson) {
+        boolean result = false;
         for (int i = 0; i < persons.size(); i++) {
             if (nameOfPerson.equals(persons.get(i).getNameOfPerson()))
-                return true;
+                result = true;
         }
-        return false;
+        return result;
     }
 
     public boolean isPetExistByName(String nameOfPet) {
+        boolean result = false;
         for (int i = 0; i < persons.size(); i++) {
             if (nameOfPet.equals(persons.get(i).getPetNameOfPerson()))
-                return true;
+                result = true;
         }
-        return false;
+        return result;
     }
 
     public boolean isClinicFull() {
-        if (getCountOfPerson() == MAX_PERSONS_IN_CLINIC) return true;
-        else return false;
+        return (getCountOfPerson() == MAX_PERSONS_IN_CLINIC) ? true : false;
     }
 
-    public boolean isClinicEmtpy() {
-        if (getCountOfPerson() == 0) return true;
-        else return false;
+    public boolean isClinicEmpty() {
+        return (getCountOfPerson() == 0) ? true : false;
     }
 
     public int getCountOfPerson() {

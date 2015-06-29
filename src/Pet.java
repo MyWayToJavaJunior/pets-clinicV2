@@ -2,9 +2,9 @@
  * Created by X1 on 27.06.2015.
  */
 public abstract class Pet {
-    private String typeOfPet;
-    private String nameOfPet;
+    private final String typeOfPet;
     private final String ability;
+    private String nameOfPet;
 
     public Pet(String nameOfPet, String ability) {
         this.nameOfPet = nameOfPet;
