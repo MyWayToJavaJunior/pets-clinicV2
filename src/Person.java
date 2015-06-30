@@ -11,23 +11,31 @@ public class Person {
     }
 
     public String getNameOfPerson() {
-        return nameOfPerson;
+        return this.nameOfPerson;
     }
 
     public String getPetNameOfPerson() {
-        return petOfPerson.getNameOfPet();
+        return this.petOfPerson.getNameOfPet();
     }
 
     public void setNameOfPerson(String nameOfPerson) {
         this.nameOfPerson = nameOfPerson;
     }
 
+    public Class<? extends Pet> getClassEnemyOfPet() {
+        return this.petOfPerson.doAction();
+    }
+
+    public Class<? extends Pet> getClassOfPet() {
+        return petOfPerson.getClass();
+    }
+
     public void setPetNameOfPerson(String nameOfPet) {
-        petOfPerson.setNameOfPet(nameOfPet);
+        this.petOfPerson.setNameOfPet(nameOfPet);
     }
 
     @Override
     public String toString() {
-        return "Name of Person: " + getNameOfPerson() + ", " + petOfPerson.toString();
+        return "Name of Person: " + this.getNameOfPerson() + ", " + this.petOfPerson.toString();
     }
 }

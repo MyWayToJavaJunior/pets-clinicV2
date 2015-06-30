@@ -9,7 +9,7 @@ public class OutputInterface {
     public void showFirstMenu() {
         outprint("Select the operation: 1 - ADD, 2 - View all Persons, 3 - Find by Person name," +
                 " 4 - Find by Pet name, 5 - Rename Person, 6 - Rename Pet," +
-                " 7 - Remove Person by name, 8 - Remove Person by Pet name, 0 - QUIT");
+                " 7 - Remove Person by name, 8 - Remove Person by Pet name, 9 - Do pet action, 0 - QUIT");
     }
 
     public void askForNameOfPerson() {
@@ -50,5 +50,9 @@ public class OutputInterface {
 
     public void saidClinicFull() {
         outprint("Clinic is full, remove unnecessary Persons");
+    }
+
+    public void saidPetEatingOtherPets(String nameOfPet, String eatingClassOfPet) {
+        outprint(nameOfPet + " eat some " + eatingClassOfPet + " OM!NOM!NOM!" );
     }
 }

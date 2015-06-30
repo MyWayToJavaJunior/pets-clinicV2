@@ -31,6 +31,23 @@ public class Clinic {
         }
     }
 
+    public Class<? extends Pet> getClassEnemyOfPetByName(String nameOfPet) {
+        return persons.get(findPersonIdByPetName(nameOfPet)).getClassEnemyOfPet();
+    }
+
+    public void remPersonsByClassOfPet(Class<? extends Pet> petClass) {
+        for (int i = 0; i < persons.size(); i++) {
+            if (petClass.equals(persons.get(i).getClassOfPet())) {
+                remPersonById(i);
+                remPersonsByClassOfPet(petClass);
+            }
+        }
+    }
+
+    public void remPersonById(int idPerson) {
+        persons.remove(idPerson);
+    }
+
     public String viewPersonByName(String nameOfPerson) {
         String result = "";
         for (int i = 0; i < persons.size(); i++) {

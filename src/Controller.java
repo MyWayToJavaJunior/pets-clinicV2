@@ -56,6 +56,8 @@ public class Controller {
                         break;
             case 8:     remByPetName();
                         break;
+            case 9:     petDoAction();
+                        break;
             case 0:     exitFromProgram = true;
                         return;
             default:    break;
@@ -83,6 +85,19 @@ public class Controller {
         }
         else {
             clinic.viewAllPersons();
+        }
+    }
+
+    public void petDoAction() {
+        if (clinic.isClinicEmpty()) {
+            outputInterface.saidNoPersonsInClinic();
+        } else {
+            String nameOfPet = askForAndGetPetName();
+            if (clinic.isPetExistByName(nameOfPet)) {
+                clinic.remPersonsByClassOfPet(clinic.getClassEnemyOfPetByName(nameOfPet));
+            } else {
+                outputInterface.saidPetNotFound();
+            }
         }
     }
 
