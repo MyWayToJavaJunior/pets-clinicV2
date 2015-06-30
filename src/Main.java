@@ -1,5 +1,7 @@
 /**
- * Created by X1 on 27.06.2015.
+ * @author DK
+ * @version 1.0.1
+ * Основной класс, в котором иницализируется контроллер
  */
 public class Main {
     public static void main(String[] args) {

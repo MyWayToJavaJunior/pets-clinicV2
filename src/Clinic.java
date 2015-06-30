@@ -14,7 +14,7 @@ public class Clinic {
     private ArrayList<Person> persons = new ArrayList<Person>(MAX_PERSONS_IN_CLINIC);
 
     /**
-     * ƒобавление персоные в массив
+     * ƒобавление персоны в массив
      * @param nameOfPerson »м€ персоны
      * @param nameOfPet »м€ животного персоны
      * @param typeOfPet “ип животного, через условный пор€дковый номер
@@ -35,7 +35,7 @@ public class Clinic {
     }
 
     /**
-     * демонстраци€ всех персон массива
+     * демонстраци€ всех ѕерсон массива
      * при условии что массив не пустой
      */
     public void viewAllPersons() {

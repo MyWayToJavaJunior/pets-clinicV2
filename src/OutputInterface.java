@@ -1,58 +1,99 @@
 /**
- * Created by X1 on 27.06.2015.
+ * Работа с выводом
  */
 public class OutputInterface {
-    public void outprint(String oprint) {
-        System.out.println(oprint);
+
+    /**
+     * Выводит входящую строку
+     * @param prnt входщая строка
+     */
+    public void pr(String prnt) {
+        System.out.println(prnt);
     }
 
+    /**
+     * Главное меню программы
+     */
     public void showFirstMenu() {
-        outprint("Select the operation: 1 - ADD, 2 - View all Persons, 3 - Find by Person name," +
+        pr("Select the operation: 1 - ADD, 2 - View all Persons, 3 - Find by Person name," +
                 " 4 - Find by Pet name, 5 - Rename Person, 6 - Rename Pet," +
                 " 7 - Remove Person by name, 8 - Remove Person by Pet name, 9 - Do pet action, 0 - QUIT");
     }
 
+    /**
+     * Запрашиваем имя Персоны
+     */
     public void askForNameOfPerson() {
-        outprint("Enter name of Person");
+        pr("Enter name of Person");
     }
 
+    /**
+     * Запрашиваем новое имя Персоны
+     */
     public void askForNewNameOfPerson() {
-        outprint("Enter new name of Person");
+        pr("Enter new name of Person");
     }
 
+    /**
+     * Запрашиваем имя животного
+     */
     public void askForPetName() {
-        outprint("Enter name of Pet");
+        pr("Enter name of Pet");
     }
 
+    /**
+     * Запрашиваем новое имя живного
+     */
     public void askForNewPetName() {
-        outprint("Enter new name of Pet");
+        pr("Enter new name of Pet");
     }
 
+    /**
+     * Запрашиваем тип животного
+     */
     public void askForPetType() {
-        outprint("Enter type of Pet: 1 - CAT, 2 - DOG, 3 - BIRD (default CAT)");
+        pr("Enter type of Pet: 1 - CAT, 2 - DOG, 3 - BIRD (default CAT)");
     }
 
+    /**
+     * Сообщаем что Персона не найдена
+     */
     public void saidPersonNotFound() {
-        outprint("Person not found");
+        pr("Person not found");
     }
 
+    /**
+     *  Сообщаем что животное не найдено
+     */
     public void saidPetNotFound() {
-        outprint("Pet not found");
+        pr("Pet not found");
     }
 
+    /**
+     *  Сообщаем что Персона уже существует
+     */
     public void saidPersonAlreadyExist() {
-        outprint("Person already exist");
+        pr("Person already exist");
     }
 
+    /**
+     *  Сообщаем что в клинике нет Персон
+     */
     public void saidNoPersonsInClinic() {
-        outprint("No Persons in Clinic");
+        pr("No Persons in Clinic");
     }
 
+    /**
+     * Сообщаем что в клинике нет места
+     */
     public void saidClinicFull() {
-        outprint("Clinic is full, remove unnecessary Persons");
+        pr("Clinic is full, remove unnecessary Persons");
     }
 
+    /**
+     * Сообщаем что животное съело другое животное
+     */
     public void saidPetEatingOtherPets(String nameOfPet, String eatingClassOfPet) {
-        outprint(nameOfPet + " eat some " + eatingClassOfPet + " OM!NOM!NOM!" );
+        pr(nameOfPet + " eat some " + eatingClassOfPet + " OM!NOM!NOM!");
     }
 }

@@ -1,12 +1,25 @@
 /**
- * Created by X1 on 27.06.2015.
+ * Контроллер
+ * исползуется паттерн Builder
  */
 public class Controller {
+
+    /**
+     * Переменная отвечающая за выход из программы
+     */
     private boolean exitFromProgram = false;
+
+    /**
+     * Обьявляется экземпляр клиники, интерфейсов ввода и вывода
+     */
     private final Clinic clinic;
     private final InputInterface inputInterface;
     private final OutputInterface outputInterface;
 
+    /**
+     * Класс создающий и инициализирующий значениями поля
+     * которые будут переданны в конструктор класса Controller
+     */
     public static class Builder {
         private final Clinic clinic;
         private final InputInterface inputInterface;
@@ -18,17 +31,33 @@ public class Controller {
             this.outputInterface = new OutputInterface();
         }
 
+        /**
+         * Получаем ссылку на экхемляр класса
+         * @return возвращает экземпляр
+         * класса Controller
+         */
         public Controller build() {
             return new Controller(this);
         }
     }
 
+    /**
+     * Экземпляр класса для инциализации
+     * класса Controller
+     * @param builder класс для иницализации
+     */
     private Controller(Builder builder) {
         clinic = builder.clinic;
         inputInterface = builder.inputInterface;
         outputInterface = builder.outputInterface;
     }
 
+    /**
+     * Метод содержит цикл в котором вызывается
+     * метод выводящий основное меню
+     * пока переменная отвечающая за выход не изменит
+     * свое содержимое на удовлетворяющее для выхода
+     */
     public void action() {
         while (!exitFromProgram) {
             firstMenu();
@@ -36,6 +65,9 @@ public class Controller {
 
     }
 
+    /**
+     * Основное меню.
+     */
     public void firstMenu() {
         outputInterface.showFirstMenu();
         int choicesFromFirstMenu = inputInterface.getInt();
@@ -64,6 +96,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Добавление Персоны методом класса Clinic
+     */
     private void addPerson() {
         if (clinic.isClinicFull()) {
             outputInterface.saidClinicFull();
@@ -79,6 +114,9 @@ public class Controller {
         }
     }
 
+    /**
+     *  Вывод всех Персон методом класса Clinic
+     */
     private void viewAllPersons() {
         if (clinic.isClinicEmpty()) {
             outputInterface.saidNoPersonsInClinic();
@@ -88,6 +126,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Выполнение действия животного
+     */
     public void petDoAction() {
         if (clinic.isClinicEmpty()) {
             outputInterface.saidNoPersonsInClinic();
@@ -101,23 +142,33 @@ public class Controller {
         }
     }
 
+    /**
+     * Поиск и вывод Персоны
+     * используется метод поиска по имени Персоны
+     */
     public void findByNameOfPersonAndView() {
         String nameOfPerson = askForAndGetPersonName();
         if (clinic.isPersonExistByName(nameOfPerson)) {
-            outputInterface.outprint(clinic.viewPersonByName(nameOfPerson));
+            outputInterface.pr(clinic.viewPersonByName(nameOfPerson));
         } else
             outputInterface.saidPersonNotFound();
     }
 
+    /**
+     * Поиск и вывод Персоны
+     * используется метод поиска по имени животного
+     */
     public void findByNameOfPetAndView() {
         String nameOfPet = askForAndGetPetName();
         if (clinic.isPetExistByName(nameOfPet)) {
-            outputInterface.outprint(clinic.viewPersonByPetName(nameOfPet));
+            outputInterface.pr(clinic.viewPersonByPetName(nameOfPet));
         } else
             outputInterface.saidPetNotFound();
     }
 
-
+    /**
+     * Переименование Персоны
+     */
     public void renPerson() {
         String nameOfPerson = askForAndGetPersonName();
         if (clinic.isPersonExistByName(nameOfPerson)) {
@@ -129,6 +180,9 @@ public class Controller {
         } else outputInterface.saidPersonNotFound();
     }
 
+    /**
+     * Переименование животного
+     */
     public void renPet() {
         String nameOfPet = askForAndGetPetName();
         if (clinic.isPetExistByName(nameOfPet)) {
@@ -138,6 +192,10 @@ public class Controller {
             outputInterface.saidPetNotFound();
     }
 
+    /**
+     * Удаление персоны
+     * используется метод удаления по имени Персоны
+     */
     public void remByPersonName() {
         String nameOfPerson = askForAndGetPersonName();
         if (clinic.isPersonExistByName(nameOfPerson)) {
@@ -146,6 +204,10 @@ public class Controller {
             outputInterface.saidPersonNotFound();
     }
 
+    /**
+     * Удаление персоны
+     * используется метод удаления по имени животого
+     */
     public void remByPetName() {
         String nameOfPet = askForAndGetPetName();
         if (clinic.isPetExistByName(nameOfPet)) {
@@ -154,26 +216,51 @@ public class Controller {
             outputInterface.saidPetNotFound();
     }
 
+    /**
+     * Вызывает метод запрашивающий имя для Персоны
+     * и возврашает строку
+     * @return имя для Персоны
+     */
     public String askForAndGetPersonName() {
         outputInterface.askForNameOfPerson();
         return inputInterface.getStr();
     }
 
+    /**
+     * Вызывает метод запрашивающий имя для животного
+     * и возврашает строку
+     * @return имя для животного
+     */
     public String askForAndGetPetName() {
         outputInterface.askForPetName();
         return inputInterface.getStr();
     }
 
+    /**
+     * Вызывает метод запрашивающий новое
+     * имя для Персоны и возврашает строку
+     * @return новое имя для Персоны
+     */
     public String askForAndGetNewPersonName() {
         outputInterface.askForNewNameOfPerson();
         return inputInterface.getStr();
     }
 
+    /**
+     * Вызывает метод запрашивающий новое
+     * имя для животного и возврашает строку
+     * @return новое имя для животного
+     */
     public String askForAndGetNewPetName() {
         outputInterface.askForNewPetName();
         return inputInterface.getStr();
     }
 
+    /**
+     * Вызывает метод запрашивающий новое
+     * тип животного и возврашает число
+     * @return номер для типа животного
+     */
     public int askForAndGetTypeOfPet() {
         outputInterface.askForPetType();
         return inputInterface.getInt();
